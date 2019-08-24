@@ -4,6 +4,9 @@ from matplotlib import pyplot as plt
 from io import BytesIO
 from base64 import b64encode
 import time
+import numpy as np
+from scipy.interpolate import spline
+
 
 parser = reqparse.RequestParser(bundle_errors=True)
 parser.add_argument("changed_words", required=True, type=int)
@@ -29,9 +32,15 @@ class Activity(Resource):
         min_time = min(times)
         time_activity = [record[1] - min_time for record in records]
 
+        x_sm = np.array(times)
+        y_sm = np.array(words_activity)
+
+        smooth_times = np.linspace(x_sm.min(), x_sm.max(), 200)
+        smooth_words_activity = spline(times, words_activity, smooth_times)
+
         fig = plt.figure(1)
         fig.patch.set_facecolor("#eeeeee")
-        line, = plt.plot(time_activity, words_activity, 'ro', ls='-')
+        line, = plt.plot(smooth_times, smooth_words_activity, ls='-')
         line.set_color("#00adb5")
         axes = plt.gca()
         axes.set_xlabel('Time (Sec)', color="#303841")
