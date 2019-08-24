@@ -42,7 +42,7 @@ class Activity(Resource):
 
         temp_file = BytesIO()
 
-        plt.savefig(temp_file, format='png')
+        plt.savefig(temp_file, format='png', facecolor=fig.get_facecolor())
         b64_data = b64encode(temp_file.getvalue())\
             .decode('utf-8')\
             .replace('\n', '')
