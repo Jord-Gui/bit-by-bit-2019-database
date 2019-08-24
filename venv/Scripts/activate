@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Jord_\Desktop\bit-by-bit-2019-database\venv"
+VIRTUAL_ENV="C:\Users\stran\Documents\PROGRAMMING\bit-by-bit-2019-database\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

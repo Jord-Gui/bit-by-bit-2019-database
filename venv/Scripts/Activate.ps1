@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\Jord_\Desktop\bit-by-bit-2019-database\venv"
+$env:VIRTUAL_ENV="C:\Users\stran\Documents\PROGRAMMING\bit-by-bit-2019-database\venv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name
