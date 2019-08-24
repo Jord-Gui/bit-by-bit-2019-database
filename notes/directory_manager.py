@@ -11,6 +11,4 @@ class Directory(Resource):
 
         filenames = [entry[0] for entry in result]
 
-        print(filenames)
-
         return {'filenames': filenames}
