@@ -34,8 +34,8 @@ class Activity(Resource):
         axes = plt.gca()
         axes.set_xlabel('Time (Sec)')
         axes.set_ylabel('Activity (Words)')
-        axes.set_xlim([0, max(time_activity) + 1])
-        axes.set_ylim([0, max(words_activity) + 1])
+        axes.set_xlim([0, max(time_activity)])
+        axes.set_ylim([0, max(words_activity)])
 
         temp_file = BytesIO()
 
