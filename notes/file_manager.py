@@ -14,9 +14,12 @@ class File(Resource):
             '  FROM note'
             '  WHERE filename = ?',
             (filename,)
-        ).fetchone()[0]
+        ).fetchone()
 
-        return content
+        if content:
+            return {'content': content[0]}
+        else:
+            return {'content': ''}
 
     def post(self, filename):
         args = parser.parse_args()
