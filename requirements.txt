@@ -105,13 +105,15 @@ pyperclip==1.6.4
 Pyrebase==3.0.27
 pytest==3.7.3
 python-dateutil==2.7.3
+python-engineio==3.9.3
 python-jwt==2.0.1
+python-socketio==4.3.1
 pytube==9.5.0
 pytz==2018.4
 pywinpty==0.5.4
 pyzmq==17.0.0
 qtconsole==4.3.1
-requests==2.19.1
+requests==2.22.0
 requests-toolbelt==0.7.0
 rope==0.14.0
 rsa==3.4.2
@@ -135,6 +137,7 @@ traitlets==4.3.2
 urllib3==1.23
 wcwidth==0.1.7
 webencodings==0.5.1
+websocket-client==0.56.0
 websockets==3.4
 Werkzeug==0.14.1
 widgetsnbextension==3.2.1

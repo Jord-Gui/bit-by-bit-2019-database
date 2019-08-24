@@ -4,7 +4,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask_restful import Api
 
-from notes import file_manager, directory_manager, db
+from notes import file_manager, directory_manager, activity, db
 
 
 def create_app(test_config=None):
@@ -38,5 +38,6 @@ def create_app(test_config=None):
 
     api.add_resource(file_manager.File, '/file/<filename>')
     api.add_resource(directory_manager.Directory, '/ls')
+    api.add_resource(activity.Activity, '/activity')
 
     return app
