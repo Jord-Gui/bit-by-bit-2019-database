@@ -29,7 +29,8 @@ class Activity(Resource):
         min_time = min(times)
         time_activity = [record[1] - min_time for record in records]
 
-        plt.figure(1)
+        fig = plt.figure(1)
+        fig.patch.set_facecolor("#eeeeee")
         line, = plt.plot(time_activity, words_activity, 'ro', ls='-')
         line.set_color("#00adb5")
         axes = plt.gca()
