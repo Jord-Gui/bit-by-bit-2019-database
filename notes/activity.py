@@ -19,6 +19,9 @@ class Activity(Resource):
             '    int_time DESC'
         ).fetchall()
 
+        if not records:
+            return {'data': ''}
+
         words_activity = [record[0] for record in records]
 
         # Standardise times
