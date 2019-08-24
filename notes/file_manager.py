@@ -47,3 +47,8 @@ class File(Resource):
             )
 
         db.commit()
+
+    def delete(self, filename):
+        db = get_db()
+        db.execute('DELETE FROM note WHERE filename = ?', (filename,))
+        db.commit()
