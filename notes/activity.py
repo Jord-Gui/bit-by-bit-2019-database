@@ -29,12 +29,13 @@ class Activity(Resource):
         min_time = min(times)
         time_activity = [record[1] - min_time for record in records]
 
-        plt.figure(1, facecolor="#eeeeee")
+        plt.figure(1)
         line, = plt.plot(time_activity, words_activity, 'ro', ls='-')
         line.set_color("#00adb5")
         axes = plt.gca()
         axes.set_xlabel('Time (Sec)', color="#303841")
         axes.set_ylabel('Activity (Words)', color="#303841")
+        axes.patch.set_facecolor("#eeeeee")
         axes.set_xlim([0, max(time_activity)])
         axes.set_ylim([0, max(words_activity)])
 
