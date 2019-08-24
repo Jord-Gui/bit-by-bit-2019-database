@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS note;
+
+CREATE TABLE note
+(
+    id      INTEGER PRIMARY KEY AUTOINCREMENT,
+    filename TEXT UNIQUE NOT NULL,
+    content TEXT
+);
