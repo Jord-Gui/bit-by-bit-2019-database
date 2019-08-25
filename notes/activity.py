@@ -36,7 +36,7 @@ class Activity(Resource):
         time_activity.reverse()
 
         xnew = np.linspace(min(time_activity), max(time_activity), 200)
-        spl = make_interp_spline(xnew, words_activity)
+        spl = make_interp_spline(time_activity, words_activity)
         words_smooth = spl(xnew)
 
         fig = plt.figure(1)
