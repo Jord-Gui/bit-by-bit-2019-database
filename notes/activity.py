@@ -32,12 +32,15 @@ class Activity(Resource):
         min_time = min(times)
         time_activity = [record[1] - min_time for record in records]
 
-        smooth_words_activity = interp1d(time_activity, words_activity,
-                                         kind='cubic')
+        smoother = interp1d(time_activity, words_activity, kind='cubic')
+
+        points = np.linspace(min_time, max(times), 200)
+
+        smooth_words_activity = smoother(points)
 
         fig = plt.figure(1)
         fig.patch.set_facecolor("#eeeeee")
-        line, = plt.plot(time_activity, smooth_words_activity, ls='-')
+        line, = plt.plot(points, smooth_words_activity, ls='-')
         line.set_color("#00adb5")
         axes = plt.gca()
         axes.set_xlabel('Time (Sec)', color="#303841")
