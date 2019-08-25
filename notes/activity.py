@@ -26,13 +26,14 @@ class Activity(Resource):
             return {'data': ''}
 
         # Words
-        words_activity = [int(record[0]) for record in records]
+        words_activity = [record[0] for record in records]
+        words_activity.reverse()
 
         # Standardise times
-        times = [int(record[1]) for record in records]
+        times = [record[1] for record in records]
         min_time = min(times)
         time_activity = [value - min_time for value in times]
-        time_activity.sort()
+        time_activity.reverse()
 
         xnew = np.linspace(min(time_activity), max(time_activity), 200)
         spl = make_interp_spline(xnew, words_activity)
