@@ -35,8 +35,10 @@ class Activity(Resource):
         smoother = interp1d(time_activity, words_activity, kind='cubic')
 
         points = np.linspace(min_time, max(times), 200)
+        print(points)
 
         smooth_words_activity = smoother(points)
+        print(smooth_words_activity)
 
         fig = plt.figure(1)
         fig.patch.set_facecolor("#eeeeee")
