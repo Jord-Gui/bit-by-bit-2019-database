@@ -5,7 +5,7 @@ from io import BytesIO
 from base64 import b64encode
 import time
 import numpy as np
-from scipy.interpolate import spline
+from scipy.interpolate import interp1d
 
 
 parser = reqparse.RequestParser(bundle_errors=True)
@@ -36,7 +36,7 @@ class Activity(Resource):
         y_sm = np.array(words_activity)
 
         smooth_times = np.linspace(x_sm.min(), x_sm.max(), 200)
-        smooth_words_activity = spline(times, words_activity, smooth_times)
+        smooth_words_activity = interp1d(times, words_activity, kind='cubic')
 
         fig = plt.figure(1)
         fig.patch.set_facecolor("#eeeeee")
