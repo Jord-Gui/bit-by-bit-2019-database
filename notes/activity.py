@@ -5,7 +5,7 @@ from io import BytesIO
 from base64 import b64encode
 import time
 import numpy as np
-from scipy.interpolate import make_interp_spline, BSpline
+from scipy.interpolate import interp1d
 
 
 parser = reqparse.RequestParser(bundle_errors=True)
@@ -35,8 +35,8 @@ class Activity(Resource):
         time_activity = [value - min_time for value in times]
         time_activity.reverse()
 
+        spl = interp1d(time_activity, words_activity, kind='cubic')
         xnew = np.linspace(min(time_activity), max(time_activity), 200)
-        spl = make_interp_spline(time_activity, words_activity)
         words_smooth = spl(xnew)
 
         fig = plt.figure(1)
