@@ -33,8 +33,8 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    with app.app_context():
-        db.init_db()
+    # with app.app_context():
+    #     db.init_db()
 
     api.add_resource(file_manager.File, '/file/<filename>')
     api.add_resource(directory_manager.Directory, '/ls')
