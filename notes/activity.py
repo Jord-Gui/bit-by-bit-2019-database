@@ -37,7 +37,7 @@ class Activity(Resource):
 
         fig = plt.figure(1)
         fig.patch.set_facecolor("#eeeeee")
-        line, = plt.plot(smooth_times, smooth_words_activity, ls='-')
+        line, = plt.plot(time_activity, smooth_words_activity, ls='-')
         line.set_color("#00adb5")
         axes = plt.gca()
         axes.set_xlabel('Time (Sec)', color="#303841")
