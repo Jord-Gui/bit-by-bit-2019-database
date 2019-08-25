@@ -25,12 +25,12 @@ class Activity(Resource):
         if not records:
             return {'data': ''}
 
-        words_activity = [record[0] for record in records]
+        words_activity = [int(record[0]) for record in records]
 
         # Standardise times
-        times = [record[1] for record in records]
+        times = [int(record[1]) for record in records]
         min_time = min(times)
-        time_activity = [record[1] - min_time for record in records]
+        time_activity = [time - min_time for times in times]
 
         smoother = interp1d(time_activity, words_activity, kind='cubic')
 
