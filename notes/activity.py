@@ -32,9 +32,10 @@ class Activity(Resource):
         times = [int(record[1]) for record in records]
         min_time = min(times)
         time_activity = [value - min_time for value in times]
+        time_activity.sort()
 
         xnew = np.linspace(min(time_activity), max(time_activity), 200)
-        spl = make_interp_spline(time_activity, words_activity)
+        spl = make_interp_spline(xnew, words_activity)
         words_smooth = spl(xnew)
 
         fig = plt.figure(1)
