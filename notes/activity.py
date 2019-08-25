@@ -4,8 +4,8 @@ from matplotlib import pyplot as plt
 from io import BytesIO
 from base64 import b64encode
 import time
-import numpy as np
-from scipy.interpolate import interp1d
+# import numpy as np
+# from scipy.interpolate import interp1d
 
 
 parser = reqparse.RequestParser(bundle_errors=True)
@@ -35,13 +35,13 @@ class Activity(Resource):
         time_activity = [value - min_time for value in times]
         time_activity.reverse()
 
-        spl = interp1d(time_activity, words_activity, kind='cubic')
-        xnew = np.linspace(min(time_activity), max(time_activity), 200)
-        words_smooth = spl(xnew)
+        # spl = interp1d(time_activity, words_activity, kind='cubic')
+        # xnew = np.linspace(min(time_activity), max(time_activity), 200)
+        # words_smooth = spl(xnew)
 
         fig = plt.figure(1)
         fig.patch.set_facecolor("#eeeeee")
-        line, = plt.plot(xnew, words_smooth, ls='-')
+        line, = plt.plot(time_activity, words_activity, ls='-')
         line.set_color("#00adb5")
         axes = plt.gca()
         axes.set_xlabel('Time (Sec)', color="#303841")
