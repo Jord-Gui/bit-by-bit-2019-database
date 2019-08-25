@@ -12,4 +12,4 @@ CREATE TABLE activity
     id          INTEGER PRIMARY KEY AUTOINCREMENT,
     words       INTEGER NOT NULL,
     int_time    INTEGER NOT NULL
-)
+);
