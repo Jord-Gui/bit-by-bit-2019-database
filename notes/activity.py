@@ -34,7 +34,7 @@ class Activity(Resource):
 
         smoother = interp1d(time_activity, words_activity, kind='cubic')
 
-        points = np.linspace(min_time, max(times), 200)
+        points = np.arange(min_time, max(times))
         print(points)
 
         smooth_words_activity = smoother(points)
