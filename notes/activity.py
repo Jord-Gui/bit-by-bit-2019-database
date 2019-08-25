@@ -36,7 +36,8 @@ class Activity(Resource):
         y_sm = np.array(words_activity)
 
         smooth_times = np.linspace(x_sm.min(), x_sm.max(), len(times))
-        smooth_words_activity = interp1d(smooth_times, y_sm, kind='cubic')
+        smooth_words_activity = interp1d(smooth_times.flatten(),
+                                         y_sm.flatten(), kind='cubic')
 
         fig = plt.figure(1)
         fig.patch.set_facecolor("#eeeeee")
