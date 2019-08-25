@@ -30,7 +30,7 @@ class Activity(Resource):
         # Standardise times
         times = [int(record[1]) for record in records]
         min_time = min(times)
-        time_activity = [time - min_time for times in times]
+        time_activity = [value - min_time for value in times]
 
         smoother = interp1d(time_activity, words_activity, kind='cubic')
 
