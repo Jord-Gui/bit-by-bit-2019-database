@@ -5,7 +5,7 @@ from io import BytesIO
 from base64 import b64encode
 import time
 import numpy as np
-from scipy.interpolate import interp1d
+from scipy.interpolate import make_interp_spline, BSpline
 
 
 parser = reqparse.RequestParser(bundle_errors=True)
@@ -25,6 +25,7 @@ class Activity(Resource):
         if not records:
             return {'data': ''}
 
+        # Words
         words_activity = [int(record[0]) for record in records]
 
         # Standardise times
@@ -32,17 +33,13 @@ class Activity(Resource):
         min_time = min(times)
         time_activity = [value - min_time for value in times]
 
-        smoother = interp1d(time_activity, words_activity, kind='cubic')
-
-        points = np.arange(min_time, max(times))
-        print(points)
-
-        smooth_words_activity = smoother(points)
-        print(smooth_words_activity)
+        xnew = np.linspace(min(time_activity), max(time_activity), 200)
+        spl = make_interp_spline(time_activity, words_activity)
+        words_smooth = spl(xnew)
 
         fig = plt.figure(1)
         fig.patch.set_facecolor("#eeeeee")
-        line, = plt.plot(points, smooth_words_activity, ls='-')
+        line, = plt.plot(xnew, words_smooth, ls='-')
         line.set_color("#00adb5")
         axes = plt.gca()
         axes.set_xlabel('Time (Sec)', color="#303841")
