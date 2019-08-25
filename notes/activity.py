@@ -32,12 +32,8 @@ class Activity(Resource):
         min_time = min(times)
         time_activity = [record[1] - min_time for record in records]
 
-        x_sm = np.array(times)
-        y_sm = np.array(words_activity)
-
-        smooth_times = np.linspace(x_sm.min(), x_sm.max(), len(times))
-        smooth_words_activity = interp1d(smooth_times.flatten(),
-                                         y_sm, kind='cubic')
+        smooth_words_activity = interp1d(time_activity, words_activity,
+                                         kind='cubic')
 
         fig = plt.figure(1)
         fig.patch.set_facecolor("#eeeeee")
