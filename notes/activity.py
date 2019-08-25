@@ -37,11 +37,11 @@ class Activity(Resource):
 
         spl = interp1d(time_activity, words_activity, kind='cubic')
         xnew = np.linspace(min(time_activity), max(time_activity), 200)
-        words_smooth = spl(xnew)
+        # words_smooth = spl(xnew)
 
         fig = plt.figure(1)
         fig.patch.set_facecolor("#eeeeee")
-        line, = plt.plot(xnew, words_smooth, ls='-')
+        line, = plt.plot(xnew, spl, xnew, ls='-')
         line.set_color("#00adb5")
         axes = plt.gca()
         axes.set_xlabel('Time (Sec)', color="#303841")
